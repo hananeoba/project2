@@ -18,19 +18,15 @@ class MainApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: Fonts.poppins,
         visualDensity: VisualDensity.adaptivePlatformDensity,
-        colorScheme: ColorScheme.fromSwatch(accentColor: Colours.primaryColor),
+        colorScheme: ColorScheme.fromSwatch(
+          accentColor: Colours.primaryColor,
+        ),
         useMaterial3: true,
-        appBarTheme: const AppBarTheme(color: Colors.transparent),
-      ),
-      onGenerateRoute: generateRoute,
-      routes: {
-        OnboardingScreen.routeName: (_) => const OnboardingScreen(),
-      },
-      home: const Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
+        appBarTheme: const AppBarTheme(
+          color: Colors.transparent,
         ),
       ),
+      onGenerateRoute: generateRoute,
     );
   }
 }
