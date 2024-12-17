@@ -4,8 +4,11 @@ import 'package:project2/src/onboarding/presentation/onboarding_screen.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
-    // case OnboardingScreen.routeName:
-    //   return _pageBuilder((_) => const OnboardingScreen(), settings: settings,);
+    case OnboardingScreen.routeName:
+      return _pageBuilder(
+        (_) => const OnboardingScreen(),
+        settings: settings,
+      );
 
     default:
       return _pageBuilder((_) => const PageUnderConstruction(),
