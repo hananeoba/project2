@@ -32,8 +32,10 @@ void main() {
     final result = await usecase();
     // assert
     expect(
-        result, Left(ServerFailure(message: 'unknown error', statusCode: 500)));
-    verify(() => repo.cacheFirstTimer());
+        result,
+        Left<Failure, dynamic>(
+            ServerFailure(message: 'unknown error', statusCode: 500)));
+    verify(() => repo.cacheFirstTimer()).called(1);
     verifyNoMoreInteractions(repo);
   });
 }
