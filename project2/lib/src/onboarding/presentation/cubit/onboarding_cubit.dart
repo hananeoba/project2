@@ -18,17 +18,11 @@ class OnboardingCubit extends Cubit<OnboardingState> {
 
   Future<void> cacheFirstTimer() async {
     final result = await _cacheFirstTimer();
+    emit(const CachingFirstTimer());
     result.fold(
       (failure) => emit(OnboardingError(message: failure.message)),
       (_) => emit(const UserCached()),
     );
-    emit(const CachingFirstTimer());
-    try {
-      await _cacheFirstTimer();
-      emit(const UserCached());
-    } catch (e) {
-      emit(OnboardingError(message: e.toString()));
-    }
   }
 
   Future<void> isFirstTime() async {
