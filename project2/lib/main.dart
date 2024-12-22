@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:project2/core/res/colors.dart';
 import 'package:project2/core/res/fonts.dart';
-import 'package:project2/services/router.dart';
-import 'package:project2/src/onboarding/presentation/onboarding_screen.dart';
+import 'package:project2/core/services/injection.dart';
+import 'package:project2/core/services/router.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await init();
   runApp(const MainApp());
 }
 

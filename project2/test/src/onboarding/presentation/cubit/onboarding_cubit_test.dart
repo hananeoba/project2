@@ -92,11 +92,15 @@ void main() {
       },
     );
     blocTest<OnboardingCubit, OnboardingState>(
-      'emits [checkingFirstTimer, onboardingError] when unsuccessful',
+      'emits [checkingFirstTimer, onboardingStatus] when unsuccessful',
       build: () {
-        when(() => cacheFirstTimer()).thenAnswer(
+        // Mocking the response of _isFirstTime to return a CacheFailure
+        when(() => isFirstTime()).thenAnswer(
           (_) async => Left(
-            CacheFailure(message: 'could not retreive cache', statusCode: 404),
+            CacheFailure(
+              message: 'could not retrieve cache',
+              statusCode: 404,
+            ),
           ),
         );
         return cubit;
