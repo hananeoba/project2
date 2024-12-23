@@ -4,7 +4,6 @@ import 'package:project2/core/errors/failure.dart';
 import 'package:project2/core/utils/typedefs.dart';
 import 'package:project2/src/onboarding/data/datasource/onboarding_local_datasrc.dart';
 import 'package:project2/src/onboarding/domain/repos/onboarding_repo.dart';
-import 'package:project2/src/onboarding/domain/use_cases/is_first_time.dart';
 
 class OnboardingRepoImplementation implements OnboardingRepo {
   const OnboardingRepoImplementation(this._localDataSource);
@@ -24,8 +23,8 @@ class OnboardingRepoImplementation implements OnboardingRepo {
   @override
   ResultFuture<bool> isFirstTime() async {
     try {
-      await _localDataSource.isFirstTime();
-      return const Right(true);
+      final result = await _localDataSource.isFirstTime();
+      return Right(result);
     } on CacheExceptions catch (e) {
       return Left(CacheFailure(message: e.message, statusCode: e.statusCode));
     }
