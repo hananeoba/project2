@@ -34,7 +34,7 @@ void main() {
     });
     test('should return failure if call is unsuccessfully  ', () async {
       when(() => localDataSrc.cacheFirstTimer()).thenThrow(
-        (_) async => const CacheExceptions(
+        const CacheExceptions(
           message: 'unsufficient storage ',
         ),
       );
