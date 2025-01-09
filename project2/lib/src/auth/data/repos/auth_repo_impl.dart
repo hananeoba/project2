@@ -38,10 +38,11 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
-  ResultFuture<LocalUser> signUp(
-      {required String email,
-      required String password,
-      required String fullName}) async {
+  ResultFuture<LocalUser> signUp({
+    required String email,
+    required String password,
+    required String fullName,
+  }) async {
     try {
       final user = await _remoteDataSrc.signUp(
         email: email,
